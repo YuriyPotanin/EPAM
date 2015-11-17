@@ -1,5 +1,5 @@
 var app = angular
-	.module('mainModule', ['ngResource', 'ngRoute']);
+	.module('mainModule', ['ngRoute']);
 
 app.config(function($routeProvider, $locationProvider) {
 	$routeProvider.

@@ -1,9 +1,9 @@
 var app = require('../app');
 
 angular.module('mainModule').controller('mainCtrl', mainCtrlFn);
-mainCtrlFn.$inject = ['dataService', '$location'];
+mainCtrlFn.$inject = ['dataService', '$location','$timeout'];
 
-function mainCtrlFn(dataService, $location) {
+function mainCtrlFn(dataService, $location, $timeout) {
 	var mv = this;
 	mv.isViewDetalis = false;
 
@@ -18,7 +18,11 @@ function mainCtrlFn(dataService, $location) {
 		mv. selectItem = returnData.item;
 		mv.selectItemIndex =returnData.index;
 		mv.isViewDetalis = false;
-		mv.changeValAnim = false;
+		
+		$timeout(function(){
+			mv.changeValAnim = false;
+		}, 400);
+
 	};
 
 	mv.getPrevItem =function () {
@@ -28,7 +32,11 @@ function mainCtrlFn(dataService, $location) {
 		mv.selectItem = returnData.item;
 		mv.selectItemIndex =returnData.index;
 		mv.isViewDetalis = false;
-		mv.changeValAnim = false;
+		
+		$timeout(function(){
+			mv.changeValAnim = false;
+		}, 400);
+
 		
 	};
 	mv.viewDetalis = function () {
