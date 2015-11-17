@@ -1,7 +1,7 @@
 {
-  "name": "LightIt-test-server",
+  "name": "EPAMttest-server",
   "version": "1.0.0",
-  "description": "LightItTestServer",
+  "description": "EPAMtestServer",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/YuriyPotanin/LightItTest.git"
+    "url": "git+https://github.com/YuriyPotanin/EPAMtest.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/YuriyPotanin/LightItTest/issues"
+    "url": "https://github.com/YuriyPotanin/EPAMtest/issues"
   },
-  "homepage": "https://github.com/YuriyPotanin/LightItTest#readme",
+  "homepage": "https://github.com/YuriyPotanin/EPAMtest#readme",
   "dependencies": {
     "angular-mocks": "^1.4.5",
     "express": "^4.13.3",

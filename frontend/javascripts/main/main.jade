@@ -1,20 +1,27 @@
 
-.mainCont
+.mainCont(ng-controller="mainCtrl as ctrl")
 	.appCont
 		.plate
 			main
-				.img
-				header
-				body.arrowForth
+				article.dataItems(ng-class="{dataItemsAfter: ctrl.changeValAnim}")
+
+					.img(ng-class = "{hideImg: ctrl.isViewDetalis}")
+						img(ng-src="img/{{ctrl.selectItem.img}}" class="appImg")
+					header
+						h4.title {{ctrl.selectItem.title}}
+					.text(ng-class = "{viewDetalis: ctrl.isViewDetalis}")
+						.description {{ctrl.selectItem.description}}
+						.note {{ctrl.selectItem.note}}
+					span.showDetalis(ng-click="ctrl.viewDetalis()") show detalis
 				.control
-					button.btnBack 
+					button.btnBack(ng-click="ctrl.getPrevItem()")
 						.arrowBtnBack
 						span.btnSpBack Prev
-					button.btnForth
+					button.btnForth(ng-click="ctrl.getNextItem()")
 						span.btnSpForth Next
 						.arrowBtnForth
 					button.btnStore
-						span.btnSpStore Find a Store
+						span.btnSpStore(ng-click="ctrl.goStory(ctrl.selectItem.productUrl)") Find a Store
 						.arrowBtnStore
 
-//- div(ng-controller='productsCtrl as products')
+{{ctrl.changeValAnim}}

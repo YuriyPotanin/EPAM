@@ -1,56 +1,44 @@
-// var app = require('../app');
+var app = require('../app');
 
-// angular.module('productsModule').controller('productsCtrl', productsCtrlFn);
-// productsCtrlFn.$inject = ['productsService', 'loginService', "$cookies"];
+angular.module('mainModule').controller('mainCtrl', mainCtrlFn);
+mainCtrlFn.$inject = ['dataService', '$location'];
 
-// function productsCtrlFn(productsService, loginService, $cookies) {
-// 	var mv = this;
-// 	mv.productReviews = [];
-// 	mv.selectedProduct = '';
+function mainCtrlFn(dataService, $location) {
+	var mv = this;
+	mv.isViewDetalis = false;
 
-
-// 	productsService.getProducts(function(products) {
-// 		mv.products = products;
-// 	});
-
-// 	mv.getProductReviews = function(productId) {
-// 		if (loginService.isAuthorized()) {
-// 			productsService.getProductReviews(productId, function(reviews) {
-// 				mv.productReviews = reviews;
-// 				mv.selectedProduct = productId;
-// 			});
-// 		}
-// 	};
-
-// 	mv.toLogin = function() {
-// 		loginService.redirectToLogin();
-// 	};
-
-// 	mv.saveReview = function() {
-// 		if (mv.rate && mv.text !== "") {
-
-// 			productsService.saveReview(mv.rate, mv.text, mv.selectedProduct, function(response) {
-// 				if(response.success){
-// 					var username = $cookies.get('userName');
-// 					newReview = {
-// 						created_at: new Date(),
-// 						product: mv.selectedProduct,
-// 						text: mv.text,
-// 						rate: mv.rate,
-// 					};
-// 					mv.productReviews.push(newReview);
-// 				}
-// 			});
-// 		} else {
-// 			alert("enter text and rating");
-// 		}
-// 	};
-// 	mv.logout = function() {
-// 		if (loginService.isAuthorized()) {
-// 			loginService.logOut();
-// 		}
-// 	};
+	mv.selectItemIndex = 0;
+	mv.selectItem = dataService.getFirstItem();
 
 
+	mv.getNextItem = function () {
+		mv.changeValAnim = true;
+		mv.selectItemIndex = ++mv.selectItemIndex; 
+		var returnData = dataService.getNextItem(mv.selectItemIndex);
+		mv. selectItem = returnData.item;
+		mv.selectItemIndex =returnData.index;
+		mv.isViewDetalis = false;
+		mv.changeValAnim = false;
+	};
 
-// }
+	mv.getPrevItem =function () {
+		mv.changeValAnim = true;
+		mv.selectItemIndex = --mv.selectItemIndex ;
+		var returnData = dataService.getPrevItem(mv.selectItemIndex);
+		mv.selectItem = returnData.item;
+		mv.selectItemIndex =returnData.index;
+		mv.isViewDetalis = false;
+		mv.changeValAnim = false;
+		
+	};
+	mv.viewDetalis = function () {
+		if(mv.isViewDetalis){
+			mv.isViewDetalis = false;
+		}else{
+			mv.isViewDetalis = true;
+		}
+	};
+	mv.goStory = function (path) {
+		$location.path(path);
+	};
+}

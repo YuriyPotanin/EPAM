@@ -1,42 +1,66 @@
-// var app = require('../app');
+var app = require('../app');
 
-// angular.module('productsModule')
-// 	.factory('productsService', productsService);
+angular.module('mainModule')
+    .factory('dataService', dataService);
 
-// productsService.$inject = ['$resource', '$http','$cookies'];
-
-
-// function productsService($resource, $http, $cookies) {
-// 	var loginMethod = {};
-
-// 	loginMethod.getProducts = function(callback) {
-
-// 		var user = $resource("http://smktesting.herokuapp.com/api/products/");
-// 		user.query(function(response) {
-// 			callback(response);
-// 		});
-// 	};
-
-// 	loginMethod.getProductReviews = function(productId, callback) {
-
-// 		var user = $resource("http://smktesting.herokuapp.com/api/reviews/" + productId);
-// 		user.query(function(response) {
-// 			callback(response);
-// 		});
-// 	};
-
-// 	loginMethod.saveReview = function(rate, text, productId, callback) {
-// 		reviewObject = {
-// 			rate: rate,
-// 			text: text
-// 		};
-// 		$http.post('http://smktesting.herokuapp.com/api/reviews/' + productId,reviewObject, {headers: {'Authorization':"Token " +$cookies.get("productsCoockies")}
-// }).success(function(response) {
-// 			callback(response);
-// 		});
-// 	};
+dataService.$inject = [];
 
 
+function dataService() {
+    var dataMethods = {};
 
-// 	return loginMethod;
-// }
+    dataMethods.getNextItem = function(selectItemIndex) {
+        if (selectItemIndex >= data.length) {
+            selectItemIndex = 0;
+        }
+        var selectObject = {};
+        selectObject.item = data[selectItemIndex];
+        selectObject.index = selectItemIndex;
+        return selectObject;
+
+    };
+
+    dataMethods.getPrevItem = function(selectItemIndex) {
+        if (selectItemIndex < 0) {
+            selectItemIndex = data.length - 1;
+        }
+        var selectObject = {};
+        selectObject.item = data[selectItemIndex];
+        selectObject.index = selectItemIndex;
+        return selectObject;
+    };
+
+    dataMethods.getFirstItem = function() {
+        return data[0];
+    };
+
+    var data = [{
+        "title": "Time to Share: 6 for $3.99*",
+        "img": "comp_plate_promo1.png",
+        "description": "Lorem ipsum dolor sit amet. consectetur adipisicing elit, sed do eiusmod tempor incididunt ut la bore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exefcitalion ullamoo laboris nisi ut aliquip ex ea commodo oonsequat.",
+        "note": "* At vero eos et accusamus et iusto odo dtgntsslmos duclmus qui blandltlis praesentlum voluptatum delenrtl atque corruptl quos doQres et quas molestlas exceptun sint occaecatl cupidrtate non pro v dent, slmllique sunt In culpa qui otflcia deserunt mollrtia anlmi. id est la bo aim et dolorum tuga.",
+        "productUrl": "/products/promo1.html"
+    }, {
+        "title": "Rise 'n shine",
+        "img": "comp_plate_promo2.png",
+        "description": "Lorem ipsum dolor sit amet. consectetur adipisicing elit, sed do eiusmod tempor incididunt ut la bore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exefcitalion ullamoo laboris nisi ut aliquip ex ea commodo oonsequat.",
+        "note": "* At vero eos et accusamus et iusto odo dtgntsslmos duclmus qui blandltlis praesentlum voluptatum delenrtl atque corruptl quos doQres et quas molestlas exceptun sint occaecatl cupidrtate non pro v dent, slmllique sunt In culpa qui otflcia deserunt mollrtia anlmi. id est la bo aim et dolorum tuga.",
+        "productUrl": "/products/promo2.html"
+    }, {
+        "title": "PM Snackers: Brownie Bites",
+        "img": "comp_plate_promo3.png",
+        "description": "Lorem ipsum dolor sit amet. consectetur adipisicing elit, sed do eiusmod tempor incididunt ut la bore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exefcitalion ullamoo laboris nisi ut aliquip ex ea commodo oonsequat.",
+        "note": "* At vero eos et accusamus et iusto odo dtgntsslmos duclmus qui blandltlis praesentlum voluptatum delenrtl atque corruptl quos doQres et quas molestlas exceptun sint occaecatl cupidrtate non pro v dent, slmllique sunt In culpa qui otflcia deserunt mollrtia anlmi. id est la bo aim et dolorum tuga.",
+        "productUrl": "/products/promo3.html"
+    }, {
+        "title": "PM Snackers: Brownie Bites new",
+        "field": "comp_plate_promo4.png",
+        "descrption": "Lorem ipsum dolor sit amet. consectetur adipisicing elit, sed do eiusmod tempor incididunt ut la bore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exefcitalion ullamoo laboris nisi ut aliquip ex ea commodo oonsequat.",
+        "note": "* At vero eos et accusamus et iusto odo dtgntsslmos duclmus qui blandltlis praesentlum voluptatum delenrtl atque corruptl quos doQres et quas molestlas exceptun sint occaecatl cupidrtate non pro v dent, slmllique sunt In culpa qui otflcia deserunt mollrtia anlmi. id est la bo aim et dolorum tuga. * At vero eos et accusamus et iusto odo dtgntsslmos duclmus qui blandltlis praesentlum voluptatum delenrtl atque corruptl quos doQres et quas molestlas exceptun sint occaecatl cupidrtate non pro v dent, slmllique sunt In culpa qui otflcia deserunt mollrtia anlmi. id est la bo aim et dolorum tuga.\n* At vero eos et accusamus et iusto odo dtgntsslmos duclmus qui blandltlis praesentlum voluptatum delenrtl atque corruptl quos doQres et quas molestlas exceptun sint occaecatl cupidrtate non pro v dent, slmllique sunt In culpa qui otflcia deserunt mollrtia anlmi. id est la bo aim et dolorum tuga.\n* At vero eos et accusamus et iusto odo dtgntsslmos duclmus qui blandltlis praesentlum voluptatum delenrtl atque corruptl quos doQres et quas molestlas exceptun sint occaecatl cupidrtate non pro v dent, slmllique sunt In culpa qui otflcia deserunt mollrtia anlmi. id est la bo aim et dolorum tuga.",
+        "productUrl": "/products/promo4.html"
+    }];
+
+
+
+    return dataMethods;
+}

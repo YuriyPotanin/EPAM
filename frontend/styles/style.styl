@@ -1,17 +1,62 @@
 // .mainCont
 // .appCont
 .plate
-	width 320px
-	height 220px
+	width 350px
+	height 365px
 	background-image url('/img/comp_plate_graybasic.png')
 	background-size 100%
-	padding 10px
+	padding 20px
+
+.dataItems
+	opacity 1
+	transition 0.5s
+	
+.dataItemsAfter
+	opacity 0
+	transition 0.5s
 .img
 	width 312px
 	height 200px
+	transition: 0.5s;
+	opacity: 1;
 // .header
 // .body
-// .control
+
+article
+	height 290px
+.control
+	margin-top: 10px
+	
+.title
+	margin-top 0px
+	color #ffa500
+	
+.text
+	height 40px
+	overflow hidden
+	transition height 0.5s
+
+.note
+	font-size x-small
+	
+.showDetalis
+	font-size: 10px;
+	color: #ffa500;
+	text-decoration: underline;
+	cursor: pointer;
+	&:hover
+		color: #84662F
+.hideImg
+	transition height 0.5s
+	opacity 0
+	height 0px
+	overflow hidden
+	
+.viewDetalis
+	height 240px
+	overflow auto
+	
+    
 .btnBack
 	background-image url('/img/button_bg_white_left.png')
 	background-repeat no-repeat
@@ -47,7 +92,7 @@
 	background-image url('/img/button_bg_white_right.png')
 	background-repeat no-repeat
 	background-size 100%
-	width 135px
+	width 140px
 	height 29px
 	outline none
 	border-radius 9px
@@ -71,7 +116,7 @@
 	font-weight 700
 		
 .btnSpStore
-	margin-right 18px
+	margin-right 22px
 	color orange
 	font-weight 700
 	
